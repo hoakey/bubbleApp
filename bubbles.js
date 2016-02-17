@@ -52,7 +52,6 @@ function bubble(x, y, color) {
             //pink-orange
             this.color = ["#fae", "#c81", "#09d"];
             break;
-            //new
         case 6:
             //Blue
             this.color = ["#0cc", "#49f", "#49f"];

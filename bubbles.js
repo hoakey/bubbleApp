@@ -19,19 +19,13 @@ function initialize(c) {
     makeBubbles(bubbles);
 }
 
-/******************
- * @param int x
- * @param int y
- * @param int color
- * @returns {bubble}
- */
 function bubble(x, y, color) {
     //x and y are optional parameters
     do {
         if (x === undefined) { this.x = rand(1, MAX_WIDTH);    }
         else { this.x = x; }
         this.dx = rand(-3.1, 3.1);
-        if (x === undefined) { this.y = rand(1, MAX_HEIGHT);   }
+        if (y === undefined) { this.y = rand(1, MAX_HEIGHT);   }
         else { this.y = y; }
         this.dy = rand(-3.1, 3.1);
         this.r = rand(14, (MAX_WIDTH / 16));     //Max radius is 1/20 or 5% of the screen width
@@ -39,24 +33,48 @@ function bubble(x, y, color) {
 
         switch (color) {
         case 1:
+            //green
             this.color = ["#ccc", "#494", "#6AD"];
             break;
         case 2:
+            //blue
             this.color = ["#0cc", "#44f", "#6AD"];
             break;
         case 3:
+            //pink
             this.color = ["#ccc", "#f9f", "#9AD"];
             break;
         case 4:
+            //orange-blue
             this.color = ["#c71", "#1ce", "#ad3"];
             break;
         case 5:
+            //pink-orange
             this.color = ["#fae", "#c81", "#09d"];
             break;
+            //new
+        case 6:
+            //Blue
+            this.color = ["#0cc", "#49f", "#49f"];
+            break;
+        case 7:
+            //purple-white
+            this.color = ["#27182B", "#C1A5C9", "#D1BCB4"];
+            break;
+        case 8:
+            //green-yellow
+            this.color = ["#13D172", "#C8C81C", "#D1D113"];
+            break;
+        case 9:
+            //dark random
+            this.color = ["#" + rand(888,999), "#" + rand(100,999), "#" + rand(888,999)];
+            break;
         default:
-            this.color = ["#ccc", "#49f", "#6AD"];
+            //Blue
+            this.color = ["#ccc", "#5CF", "#6BF"];
         }
-    } while (!this.dx && !this.dy)
+        //Redo bubble if stationary
+    } while (!this.dx || !this.dy)
 }
 ;
 
@@ -123,7 +141,8 @@ function mouseMove(c, evt) {
 function spawnBubbles() {
     //Start bubbles?
     if (bubbles.length <= 42 && !NEW_BUBBLES){
-        NEW_BUBBLES = rand(1, 6);
+        // >1 is true and color, 0 is no more new colors
+        NEW_BUBBLES = rand(1, 9);
     }
     //Spawn bubbles
     if (NEW_BUBBLES) {
@@ -171,7 +190,7 @@ c.width = innerWidth-30;
 c.height = innerHeight-20;
 MAX_WIDTH = c.width;
 MAX_HEIGHT = c.height;
-MAX_COUNT = 110;
+MAX_COUNT = 75;
 GAME_SPEED = 70;
 NEW_BUBBLES = false;
 

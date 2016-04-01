@@ -1,3 +1,4 @@
+//Example at www.outer-pla.net/app/bubbles
 //Globals
 var MAX_WIDTH, MAX_HEIGHT, MAX_COUNT, GAME_SPEED, NEW_BUBBLES, INTERVAL;
 
@@ -53,7 +54,7 @@ function bubble(x, y, color) {
             this.color = ["#fae", "#c81", "#09d"];
             break;
         case 6:
-            //Blue
+            //blue
             this.color = ["#0cc", "#49f", "#49f"];
             break;
         case 7:
@@ -69,7 +70,7 @@ function bubble(x, y, color) {
             this.color = ["#" + rand(888,999), "#" + rand(100,999), "#" + rand(888,999)];
             break;
         default:
-            //Blue
+            //blue
             this.color = ["#ccc", "#5CF", "#6BF"];
         }
         //Redo bubble if stationary
@@ -103,6 +104,7 @@ function drawBubble(ctx, bubble) {
 }
 
 function wrap(bubble) {
+	//Wrap bubble to other side of screen
     if (bubble.x < 0)
         bubble.x += (MAX_WIDTH - 1);
     if (bubble.x > MAX_WIDTH)
